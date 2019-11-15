@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Document</title>
+    <script>
+        function getDatos() {
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200) { //hay 4 States 4 => recibir los datos
+               var JSONempleado = this.responseText;
+               var empleadoArray = JSON.parse(JSONempleado);
+               var indice = parseInt(document.getElementById("WorkerIDInput").value);
+               if(isNaN(indice)){
+                 for(var i = 0;i < empleadoArray.length;i++){
+                  document.getElementById("data").innerHTML = JSON.stringify(empleadoArray[i]);
+                 }
+               }
+               else{
+                  document.getElementById("data").innerHTML = JSON.stringify(empleadoArray[indice]);
+               }
+            }
+          }
+          xmlhttp.open("GET", "data/empleado.json", true); // Asincrono = true
+          xmlhttp.send();
+        }
+        function getDatosTabla(){
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function () {
+            if(this.readyState == 4 && this.status == 200){
+              document.getElementById("tableTitle").innerHTML = "";
+              document.getElementById("dataTable").innerHTML = "";
+              var JSONempleado = this.responseText;
+              var indice = parseInt(document.getElementById("WorkerIDInput").value);
+              var empleadoArray = JSON.parse(JSONempleado);
+              $datos = $('#dataTable');
+              $table = $('<table></table>');
+              $table .append('<th>' + "FirstName" + '</th>');
+              $table .append('<th>' + "MiddleName" + '</th>');
+              $table .append('<th>' + "LastName" + '</th>');
+              $table .append('<th>' + "DateOfBirth" + '</th>');
+              $table .append('<th>' + "WorkPhoneNumber" + '</th>');
+              $table .append('<th>' + "HomePhoneNumber" + '</th>');
+              $table .append('<th>' + "WorkEmail" + '</th>');
+              $table .append('<th>' + "City" + '</th>');
+              $table .append('<th>' + "Region" + '</th>');
+              $table .append('<th>' + "Country" + '</th>');
+              $table .append('<th>' + "PostalCode" + '</th>');
+              if(isNaN(indice)){
+                document.getElementById("tableTitle").innerHTML = "Datos de todos los empleados" + '<hr>';
+                for(var i = 0;i < empleadoArray.length;i++){
+                  var $tr = $('<tr></tr>');
+                  $tr.append('<td>' + empleadoArray[i].FirstName + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].MiddleName + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].LastName + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].DateOfBirth + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].WorkPhoneNumber + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].HomePhoneNumber + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].WorkEmail + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].City + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].Region + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].Country + '</td>');
+                  $tr.append('<td>' + empleadoArray[i].PostalCode + '</td>');
+                  $table.append($tr);
+                }
+                $datos.append($table);
+              }
+              else{
+                  document.getElementById("tableTitle").innerHTML = "Datos del empleado: " + indice + '<hr>';
+                  var $tr = $('<tr></tr>');
+                  $tr.append('<td>' + empleadoArray[indice].FirstName + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].MiddleName + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].LastName + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].DateOfBirth + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].WorkPhoneNumber + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].HomePhoneNumber + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].WorkEmail + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].City + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].Region + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].Country + '</td>');
+                  $tr.append('<td>' + empleadoArray[indice].PostalCode + '</td>');
+                  $table.append($tr);
+              }
+              $datos.append($table);
+            }
+          }
+          xmlhttp.open("GET", "data/empleado.json", true);
+          xmlhttp.send();
+        }
+        </script>
+</head>
+<body>
+        <label>WorkerID</label><input type="number" id="WorkerIDInput"><br>
+        <button onclick="getDatos()">Obtener Datos en JSON</button><br/>
+        <button onclick="getDatosTabla()">Obtener Datos en Tabla</button>
+        <div id="data"></div>
+        <h1 id="tableTitle"></h1>
+        <div id="dataTable"></div>
+</body>
+</html>

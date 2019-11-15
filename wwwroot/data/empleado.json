@@ -1,0 +1,62 @@
+[
+    {
+    "WorkerID" : 0,
+    "Salutation" : "MS.",
+    "FirstName" : "Miranda",
+    "MiddleName" : "Kyle",
+    "LastName" : "Rachell",
+    "DateOfBirth" : "1990-09-09",
+    "WorkPhoneNumber" : "781-993-0000",
+    "HomePhoneNumber" : "122993333",
+    "WorkEmail" : "miranda.kyle@oracle.com",
+    "City" : "San Francisco",
+    "Region" : "California",
+    "Country" : "US",
+    "PostalCode" : "94065"
+    },
+    {
+    "WorkerID" : 1,
+    "Salutation" : "MR.",
+    "FirstName" : "Frank",
+    "MiddleName" : "Delocos",
+    "LastName" : "Paquin",
+    "DateOfBirth" : "1993-09-09",
+    "WorkPhoneNumber" : "623-432-0000",
+    "HomePhoneNumber" : "622922346",
+    "WorkEmail" : "Frank.Puertolete@oracle.com",
+    "City" : "Chung Annex",
+    "Region" : "Puertolete",
+    "Country" : "US",
+    "PostalCode" : "54265"
+    },
+    {
+    "WorkerID" : 2,
+    "Salutation" : "MR.",
+    "FirstName" : "Jocob",
+    "MiddleName" : "Samual",
+    "LastName" : "George",
+    "DateOfBirth" : "1993-09-09",
+    "WorkPhoneNumber" : "682-934-0000",
+    "HomePhoneNumber" : "542925336",
+    "WorkEmail" : "samual.george@oracle.com",
+    "City" : "Terminal Annex",
+    "Region" : "Denver",
+    "Country" : "US",
+    "PostalCode" : "80248"
+    },
+    {
+    "WorkerID" : 3,
+    "Salutation" : "MR.",
+    "FirstName" : "Paco",
+    "MiddleName" : "Satur",
+    "LastName" : "Chicope",
+    "DateOfBirth" : "2000-09-09",
+    "WorkPhoneNumber" : "622-837-0000",
+    "HomePhoneNumber" : "283926536",
+    "WorkEmail" : "Paco.Satur@oracle.com",
+    "City" : "Terminal Annex",
+    "Region" : "Chileilo",
+    "Country" : "US",
+    "PostalCode" : "70248"
+    }
+]
