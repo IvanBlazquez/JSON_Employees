@@ -1,0 +1,68 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+<script>
+function getDatos() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function () {
+    if(this.readyState == 4 && this.status == 200) { //hay 4 States 4 => recibir los datos
+       var JSONempleado = `[{
+    "WorkerID" : 1,
+    "Salutation" : "MS.",
+    "FirstName" : "Miranda",
+    "MiddleName" : "Kyle",
+    "LastName" : "Rachell",
+    "DateOfBirth" : "1990-09-09",
+    "WorkPhoneNumber" : "781-993-0000",
+    "HomePhoneNumber" : "122993333",
+    "WorkEmail" : "miranda.kyle@oracle.com",
+    "City" : "San Francisco",
+    "Region" : "California",
+    "Country" : "US",
+    "PostalCode" : "94065"
+    
+},
+ {
+    "WorkerID" : 2,
+    "Salutation" : "MR.",
+    "FirstName" : "Jocob",
+    "MiddleName" : "Samual",
+    "LastName" : "George",
+    "DateOfBirth" : "1993-09-09",
+    "WorkPhoneNumber" : "682-934-0000",
+    "HomePhoneNumber" : "542925336",
+    "WorkEmail" : "samual.george@oracle.com",
+    "City" : "Terminal Annex",
+    "Region" : "Denver",
+    "Country" : "US",
+    "PostalCode" : "80248"
+}
+]`;
+
+       var empleadoArray = JSON.parse(JSONempleado);
+       var ea = new empleadoArray;
+       console.log(empleadoArray);
+       var i = document.getElementById("WorkerIDInput").value;
+       document.getElementById("data").innerHTML = this.responseText; //los datos que esta devolviendo
+       var sData = "<table>";
+       empleadoArray.forEach(ea => {
+         sData = sData + "<tr><td>";
+         sData = sData + ea.
+       });
+       document.getElementById("WorkerID").innerHTML = empleadoArray[i].WorkerID;
+       document.getElementById("Salutation").innerHTML = empleadoArray[i].Salutation;
+       document.getElementById("FirstName").innerHTML = empleadoArray[i].FirstName;
+       //document.getElementById("Colour_Zapatilla").innerHTML = ropaArray[2].colour;
+       //document.getElementById("Precio_Zapatilla").innerHTML = ropaArray[2].price;
+       //document.getElementById("Talla_Zapatilla").innerHTML = ropaArray[2].talla;
+    }
+  }
+  xmlhttp.open("GET", "data/empleado.json", true); // Asincrono = true
+  xmlhttp.send();
+}
+</script>
+<label>WorkerID</label><input id="WorkerIDInput">
+<button onclick="getDatos()">Get Datos</button><br/>
+<div id="data"></div>
